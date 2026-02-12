@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Démo – RESAWAN.fr</title>
+<meta name="description" content="Demander une démonstration de la plateforme.">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
+<script defer src="assets/js/main.js"></script>
+
+<style>
+  /* Style spécifique pour un formulaire plus élégant */
+  .form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    margin-top: -20px;
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #edf2f7;
+  }
+  .form label { display: block; margin-bottom: 20px; font-weight: 600; color: #1a202c; font-size: 14px; }
+  .form input, .form select, .form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #edf2f7;
+    border-radius: 12px;
+    margin-top: 8px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+  }
+  .form input:focus, .form textarea:focus { border-color: #ff007f; outline: none; background: #fffafc; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .checkbox { display: flex; align-items: center; gap: 10px; font-weight: 500; cursor: pointer; }
+  .checkbox input { width: auto; margin: 0; }
+  
+  /* Messages de succès et d'erreur */
+  .alert {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #c3e6cb;
+  }
+  .alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="bubble-decor b1"></div>
+<div class="bubble-decor b2"></div>
+
+<header class="site-header">
+  <div class="container header-row" style="padding-left: 0 !important;">
+    <a class="logo" href="index.html" aria-label="Accueil RESAWAN.fr" style="display: flex; align-items: center; gap: 25px; text-decoration: none;">
+      <img src="images/Logo_Iwan_Bleu_Foncé.png" alt="" style="height: 26px; width: auto; display: block;">
+      <span class="logo-text" style="line-height: 1; margin-top:7px;">RESAWAN.fr</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href='index.html'>Accueil</a></li>
+        <li><a href='plateforme.html'>la plateforme</a></li>
+        <li><a href='vacanciers.html'>Vacanciers</a></li>
+        <li><a href='encadrants.html'>Encadrants</a></li>
+        <li><a href='conformite.html'>Conformité</a></li>
+        <li><a href='finances.html'>Finances</a></li>
+        <li><a href='pour-qui.html'>Pour qui ?</a></li>
+        <li><a href='ressources.html'>Ressources</a></li>
+        <li><a href='demo.html' aria-current='page' class='active'>Démo</a></li>
+        <li><a href='contact.html'>Contact</a></li>
+        <li><a href="https://s4.iwancloud.fr/ERP" class="btn-login" style="background: #1f5aa6; color: white; padding: 8px 18px; border-radius: 50px; font-weight: 600; text-decoration: none; margin-left: 10px; transition: opacity 0.3s;">Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class='section' style="padding-bottom: 30px;">
+  <div class='container'>
+    <div class="callout" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 30px 20px;">
+      <h1 style="margin: 0; color: white; font-size: 28px;">Demander une démo</h1>
+      <p class='lead' style="color: rgba(255,255,255,0.9); margin-top: 10px; font-size: 15px; font-weight: 500; max-width: 600px;">
+        Dites-nous ce que vous gérez (nombre de séjours, vacanciers, encadrants), et nous vous recontactons.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class='form-card'>
+        
+        <!-- Message de succès -->
+        <div id="successMessage" class="alert alert-success" style="display: none;">
+          ✓ Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.
+        </div>
+        
+        <!-- Message d'erreur -->
+        <div id="errorMessage" class="alert alert-error" style="display: none;"></div>
+        
+        <form class='form' action='send_mail.php' method='POST' id='demoForm'>
+          <div class='grid-2'>
+            <label>Organisation<input required name='org' placeholder='Nom de la structure'></label>
+            <label>Email<input required type='email' name='email' placeholder='vous@exemple.fr'></label>
+            <label>Téléphone<input name='phone' placeholder='Optionnel'></label>
+            <label>Profil
+              <select name='profil'>
+                <option>Association</option>
+                <option>CCAS / Collectivité</option>
+                <option>Organisme gestionnaire</option>
+                <option>Autre</option>
+              </select>
+            </label>
+          </div>
+          <label>Votre besoin
+            <textarea name='need' rows='5' placeholder='Ex : 25 séjours/an, portails encadrants & vacanciers, exports comptables…'></textarea>
+          </label>
+          <div class='row' style="margin-bottom: 30px;">
+            <label class='checkbox'>
+              <input type='checkbox' name='consent' required> J'accepte d'être recontacté(e) au sujet de cette demande.
+            </label>
+          </div>
+          <div style="text-align: center;">
+            <button class="btn" type="submit" style="border: none; background: none; cursor: pointer;">
+              <div class="wrapper">
+                <div class="text-btn">Envoyer la demande</div>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="text-align: center; padding: 40px 0;">
+  <div class="container">
+    <h2 style="font-size: 22px;">Prêt à simplifier votre gestion ?</h2>
+    <p style="margin-bottom: 20px; font-size: 14px; font-weight: 600;">Rejoignez les structures qui utilisent RESAWAN.fr au quotidien.</p>
+    
+    <a class="btn" href="demo.html">
+      <div class="wrapper">
+        <div class="flower flower1"><div class="petal"></div><div class="petal"></div></div>
+        <div class="flower flower2"><div class="petal"></div><div class="petal"></div></div>
+        <div class="flower flower3"><div class="petal"></div><div class="petal"></div></div>
+        <div class="flower flower6"><div class="petal"></div><div class="petal"></div></div>
+        <div class="text-btn">Demander une démo</div>
+      </div>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand">RESAWAN.fr</div>
+      <p class="muted">Plateforme de gestion des séjours de vacances adaptées : séjours, vacanciers, encadrants, conformité et pilotage.</p>
+    </div>
+    <div>
+      <h4>Liens</h4>
+      <p><a href='a-propos.html'>À propos</a> · <a href='legal.html'>Mentions légales & RGPD</a></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p class="muted">
+        02 40 28 86 38<br>
+        contact@iwan.fr
+      </p>
+    </div>
+    <div>
+      <h4>Action</h4>
+      <p>
+        <a class="btn" href="demo.html">
+          <div class="wrapper" style="width: 10em;">
+            <div class="text-btn" style="padding: 6px 12px;">Demander une démo</div>
+          </div>
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <small class="muted">© 2026 RESAWAN.fr. Tous droits réservés.</small>
+  </div>
+</footer>
+
+<script>
+// Afficher les messages de succès ou d'erreur depuis l'URL
+globalThis.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(globalThis.location.search);
+  
+  if (urlParams.has('success')) {
+    document.getElementById('successMessage').style.display = 'block';
+    document.getElementById('demoForm').reset();
+    // Masquer le message après 5 secondes
+    setTimeout(function() {
+      document.getElementById('successMessage').style.display = 'none';
+    }, 5000);
+  }
+  
+  if (urlParams.has('error')) {
+    const errorMsg = urlParams.get('error');
+    const errorDiv = document.getElementById('errorMessage');
+    errorDiv.textContent = '✗ ' + errorMsg;
+    errorDiv.style.display = 'block';
+    // Masquer le message après 8 secondes
+    setTimeout(function() {
+      errorDiv.style.display = 'none';
+    }, 8000);
+  }
+});
+</script>
+
+</body>
+</html>

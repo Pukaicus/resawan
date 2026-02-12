@@ -1,0 +1,277 @@
+:root {
+  --primary: #1f5aa6;
+  --primary-dark: #15427a; /* Ajout pour le clic */
+  --primary-bright: #3b82f6;
+  --accent-orange: #ff8c00;
+  --accent-pink: #ff007f;
+  --text: #0b1220;
+  --muted: rgba(11, 18, 32, 0.65);
+  --border: rgba(11, 18, 32, 0.1);
+  --max-w: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif; /* Police Vacances demandée */
+  color: var(--text);
+  background: #f8fbff;
+  line-height: 1.55;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --- DÉCORS FLOTTANTS (BRODÉS SUR LES CÔTÉS) --- */
+.bubble-decor {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.15;
+  animation: float-vacances 15s infinite alternate ease-in-out;
+}
+.b1 { width: 400px; height: 400px; background: var(--primary-bright); top: 5%; left: -5%; }
+.b2 { width: 500px; height: 500px; background: var(--accent-orange); bottom: 5%; right: -5%; animation-delay: -5s; }
+.b3 { width: 250px; height: 250px; background: var(--accent-pink); top: 45%; left: 85%; animation-delay: -2s; }
+
+@keyframes float-vacances {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(80px) rotate(20deg); }
+}
+
+/* --- ANIMATION MÉTÉO (CONSERVÉE) --- */
+.weather-container {
+  width: 250px; height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; margin: 0 auto;
+}
+.sun {
+  width: 90px; height: 90px;
+  background: linear-gradient(to right, #fcbb04, #fffc00);
+  border-radius: 50%; position: absolute; z-index: 10;
+}
+.sunshine { animation: sunshines 2s infinite; }
+@keyframes sunshines {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.cloud { width: 110px; position: absolute; }
+.front { z-index: 12; animation: clouds 8s infinite ease-in-out; margin-top: 40px; margin-left: -30px; }
+.back { z-index: 9; animation: clouds 12s infinite ease-in-out; margin-top: -25px; margin-left: 80px; }
+.left-front, .right-front, .left-back, .right-back { background-color: #4c9beb; display: inline-block; }
+.left-front { width: 50px; height: 50px; border-radius: 50% 50% 0% 50%; }
+.right-front { width: 35px; height: 35px; border-radius: 50% 50% 50% 0%; margin-left: -20px; }
+@keyframes clouds { 0%, 100% { transform: translateX(12px); } 50% { transform: translateX(0px); } }
+
+/* --- HEADER & NAVIGATION (CORRIGÉ POUR LOGIN) --- */
+a { text-decoration: none !important; color: inherit; transition: 0.3s; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 3px solid var(--primary);
+}
+
+.header-row { 
+  display: flex !important; 
+  align-items: center !important; 
+  justify-content: space-between !important; 
+  height: 75px;
+  padding: 0 20px 0 0 !important;
+}
+
+.logo-text { font-weight: 800; font-size: 1.4rem; color: var(--primary); white-space: nowrap; }
+
+.site-nav ul { 
+  display: flex !important; 
+  gap: 6px; /* Réduit de 12px à 6px pour gagner de la place */
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  flex-wrap: nowrap !important; 
+  align-items: center; /* Aligne le bouton Login avec les autres liens */
+}
+
+.site-nav a { 
+  font-size: 13px; /* Réduit de 14px à 13px pour que tout tienne */
+  font-weight: 600; 
+  color: var(--muted); 
+  padding: 6px 10px; /* Réduit le rembourrage latéral */
+  border-radius: 20px; 
+  white-space: nowrap;
+}
+
+.site-nav a:hover, .site-nav a.active { color: white; background: var(--primary); }
+
+
+/* --- STYLE BOUTON LOGIN --- */
+.btn-login {
+  background: #1f5aa6 !important;
+  color: white !important;
+  padding: 8px 16px !important; 
+  border-radius: 50px;
+  font-size: 13px !important;
+  font-weight: 800 !important; /* Plus gras pour qu'il ressorte */
+  margin-left: 5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-login:hover {
+  background: #164680 !important;
+  transform: translateY(-1px);
+}
+
+/* --- BLOCS CALLOUT (NOUVEAU STYLE ÉPURÉ) --- */
+.callout {
+  background: #f0f7ff !important; /* Bleu très clair */
+  border: 1px solid #e2e8f0; /* Gris clair */
+  color: #1a202c !important; /* Texte gris très foncé/noir pour la lisibilité */
+}
+
+.callout h1, .callout h2, .callout h3 {
+  color: #1f5aa6 !important; /* Ton bleu principal */
+}
+
+.callout p {
+  color: #4a5568 !important; /* Gris intermédiaire pour le texte */
+}
+/* --- HERO --- */
+.hero { padding: 50px 0; }
+.hero-grid { 
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; 
+}
+h1 { font-size: 46px; font-weight: 800; line-height: 1.1; color: var(--primary); margin: 0 0 20px; }
+
+/* --- BOUTONS À PÉTALES VIOLETS --- */
+.btn { 
+  height: 3.5em; width: 11em; 
+  display: inline-flex; align-items: center; justify-content: center; 
+  background: transparent; border: none; cursor: pointer; position: relative;
+}
+
+.wrapper {
+  height: 2.5em; width: 10em;
+  position: relative; display: flex; justify-content: center; align-items: center;
+}
+
+.text-btn {
+  font-size: 14px; font-weight: 800; z-index: 10;
+  color: white; padding: 8px 16px; border-radius: 12px;
+  background: var(--primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(31, 90, 166, 0.4);
+}
+
+/* Style des pétales */
+.flower { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  position: absolute; 
+  pointer-events: none; 
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.petal {
+  height: 1em; width: 1em; /* Pétales plus grands pour être bien visibles */
+  border-radius: 40% 70% / 7% 90%;
+  background: linear-gradient(#8A2BE2, #9370DB); 
+  border: 0.5px solid #4B0082;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+}
+
+/* Positionnement initial (un peu caché derrière) */
+.flower1 { top: -5px; left: -5px; }
+.flower2 { top: -5px; right: -5px; }
+.flower3 { bottom: -5px; left: -5px; }
+.flower6 { right: -5px; bottom: -5px; }
+
+/* --- EFFET AU SURVOL : ÉPANOUISSEMENT --- */
+.btn:hover .text-btn { background: #164680; }
+
+.btn:hover .flower1 { transform: translate(-15px, -10px) rotate(-15deg); }
+.btn:hover .flower2 { transform: translate(15px, -10px) rotate(15deg); }
+.btn:hover .flower3 { transform: translate(-15px, 10px) rotate(15deg); }
+.btn:hover .flower6 { transform: translate(15px, 10px) rotate(-15deg); }
+
+.btn:active .text-btn { transform: scale(0.95); }
+
+/* --- CARTES & GRID (MISE À JOUR POUR ÉVITER LES 4 CARTES ÉCRASÉES) --- */
+.card-grid { 
+  display: grid; 
+  /* On passe de 260px à 350px pour forcer le passage à la ligne et aérer l'affichage */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 25px; 
+  margin-top: 40px; 
+}
+
+.card { 
+  background: white; 
+  border: 2px solid var(--border); 
+  padding: 35px; 
+  border-radius: 24px; 
+  transition: 0.4s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+}
+
+.card:hover { 
+  transform: translateY(-12px); 
+  border-color: var(--primary); 
+  box-shadow: 0 20px 40px rgba(31, 90, 166, 0.1); 
+}
+
+.card h3 { 
+  color: var(--primary); 
+  margin-bottom: 15px; 
+  font-size: 22px; 
+  font-weight: 800; 
+}
+/* Correction visibilité texte Photo 3 */
+.card p {
+  color: #1a202c !important; /* Force le texte sombre pour la lecture */
+  font-weight: 500;
+  opacity: 1 !important;
+}
+
+/* --- FOOTER ALIGNÉ (PHOTO 2) --- */
+.footer-grid { 
+  display: flex !important; justify-content: space-between !important; 
+  align-items: flex-start !important; gap: 40px; border-top: 1px solid var(--border); padding-top: 50px;
+}
+.footer-grid h4 { margin: 0 0 20px; color: var(--primary); font-size: 18px; font-weight: 800; }
+
+.wave-container {
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+  margin: 40px 0; /* Espace pour que la vague ne colle pas aux cartes */
+}
+
+.wave-svg {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  animation: waveMove 6s linear infinite; /* Un peu plus lent pour plus de douceur */
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- EFFET SCROLL REVEAL (FUSIONNÉ POUR SONARQUBE) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px); /* L'élément est 30px plus bas */
+  transition: all 0.8s ease-out; /* Durée de l'animation */
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0); /* L'élément remonte à sa place */
+}
