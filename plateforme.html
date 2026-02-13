@@ -126,16 +126,45 @@
 
 <section class="section" style="text-align: center; padding: 10px 0;">
   <div class="container">
-    <!-- Première image toujours visible -->
-    <img src="images/info_comple.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15); margin-bottom: 20px;">
-    
-    <!-- Images cachées au départ -->
+    <a href="#zoom-info" style="text-decoration: none; display: block;" aria-label="Agrandir les infos complémentaires">
+      <img src="images/info_comple.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15); margin-bottom: 20px;">
+      <div class="view-hint">🔍 Cliquez pour agrandir</div>
+    </a>
+
     <div id="moreImages" style="display: none;">
-      <img src="images/mon_sejour.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15); margin-bottom: 20px;">
-      <img src="images/mes_trajets.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+      <a href="#zoom-sejour" style="text-decoration: none; display: block;" aria-label="Agrandir mon séjour">
+        <img src="images/mon_sejour.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15); margin-bottom: 20px;">
+      </a>
+      
+      <a href="#zoom-trajets" style="text-decoration: none; display: block;" aria-label="Agrandir mes trajets">
+        <img src="images/mes_trajets.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+      </a>
+    </div>
+
+    <div id="zoom-info" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer"></a>
+      <div class="lightbox-content">
+        <img src="images/info_comple.jpg" alt="Plein écran info">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
+    </div>
+
+    <div id="zoom-sejour" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer"></a>
+      <div class="lightbox-content">
+        <img src="images/mon_sejour.jpg" alt="Plein écran séjour">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
+    </div>
+
+    <div id="zoom-trajets" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer"></a>
+      <div class="lightbox-content">
+        <img src="images/mes_trajets.jpg" alt="Plein écran trajets">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
     </div>
     
-    <!-- Bouton Voir plus -->
     <button id="toggleBtn" onclick="toggleImages()" style="margin-top: 20px; background: var(--primary); color: white; padding: 16px 40px; border: none; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s;">
       Voir plus d'aperçus →
     </button>
@@ -249,7 +278,7 @@ function toggleImages() {
       <h4>Contact</h4>
       <p class="muted">
         02 40 28 86 38
-        contact@iwwan.fr
+        contact@iwan.fr
       </p>
     </div>
     <div>

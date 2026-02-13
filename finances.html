@@ -84,7 +84,21 @@
 <section class="section" style="text-align: center; padding: 10px 0;">
   <div class="container">
     <h2 style="margin-bottom: 30px; font-size: 28px; color: var(--primary);">Aperçu d'une facture</h2>
-    <img src="images/exemple_facture.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+    
+    <a href="#zoom-facture" style="text-decoration: none; display: block;" aria-label="Agrandir l'aperçu de la facture">
+      <img src="images/exemple_facture.jpg" 
+           alt="Aperçu de la plateforme RESAWAN - Facture" 
+           style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+      <div class="view-hint">🔍 Cliquez pour agrandir l'aperçu</div>
+    </a>
+
+    <div id="zoom-facture" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer l'aperçu de la facture"></a>
+      <div class="lightbox-content">
+        <img src="images/exemple_facture.jpg" alt="Aperçu plein écran de la facture">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -120,7 +134,7 @@
       <h4>Contact</h4>
       <p class="muted">
         02 40 28 86 38
-        contact@iwwan.fr
+        contact@iwan.fr
       </p>
     </div>
     <div>

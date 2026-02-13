@@ -1,6 +1,9 @@
+/* ============================================================
+   1. VARIABLES & BASE (TOUT EST CONSERVÉ)
+   ============================================================ */
 :root {
   --primary: #1f5aa6;
-  --primary-dark: #15427a; /* Ajout pour le clic */
+  --primary-dark: #15427a;
   --primary-bright: #3b82f6;
   --accent-orange: #ff8c00;
   --accent-pink: #ff007f;
@@ -14,7 +17,7 @@
 
 body {
   margin: 0;
-  font-family: 'Outfit', sans-serif; /* Police Vacances demandée */
+  font-family: 'Outfit', sans-serif;
   color: var(--text);
   background: #f8fbff;
   line-height: 1.55;
@@ -22,7 +25,7 @@ body {
   overflow-x: hidden;
 }
 
-/* --- DÉCORS FLOTTANTS (BRODÉS SUR LES CÔTÉS) --- */
+/* --- DÉCORS FLOTTANTS --- */
 .bubble-decor {
   position: fixed;
   border-radius: 50%;
@@ -40,113 +43,144 @@ body {
   to { transform: translateY(80px) rotate(20deg); }
 }
 
-/* --- ANIMATION MÉTÉO (CONSERVÉE) --- */
+/* --- ANIMATION MÉTÉO --- */
 .weather-container {
-  width: 250px; height: 220px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; margin: 0 auto;
+  width: 250px; 
+  height: 220px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  position: relative; 
+  margin: 0 auto;
 }
+
 .sun {
-  width: 90px; height: 90px;
+  width: 90px;
+  height: 90px;
   background: linear-gradient(to right, #fcbb04, #fffc00);
-  border-radius: 50%; position: absolute; z-index: 10;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
+
 .sunshine { animation: sunshines 2s infinite; }
 @keyframes sunshines {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.4); opacity: 0; }
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
 }
-.cloud { width: 110px; position: absolute; }
-.front { z-index: 12; animation: clouds 8s infinite ease-in-out; margin-top: 40px; margin-left: -30px; }
-.back { z-index: 9; animation: clouds 12s infinite ease-in-out; margin-top: -25px; margin-left: 80px; }
+
+.cloud { width: 110px; position: absolute; left: 50%; top: 50%; }
+.front { z-index: 12; animation: clouds 8s infinite ease-in-out; transform: translate(-70%, -20%); }
+.back { z-index: 9; animation: clouds 12s infinite ease-in-out; transform: translate(20%, -70%); }
+
 .left-front, .right-front, .left-back, .right-back { background-color: #4c9beb; display: inline-block; }
 .left-front { width: 50px; height: 50px; border-radius: 50% 50% 0% 50%; }
 .right-front { width: 35px; height: 35px; border-radius: 50% 50% 50% 0%; margin-left: -20px; }
-@keyframes clouds { 0%, 100% { transform: translateX(12px); } 50% { transform: translateX(0px); } }
 
-/* --- HEADER & NAVIGATION (CORRIGÉ POUR LOGIN) --- */
+@keyframes clouds { 
+  0%, 100% { margin-left: 12px; } 
+  50% { margin-left: 0px; } 
+}
+
+/* --- HEADER & NAVIGATION --- */
 a { text-decoration: none !important; color: inherit; transition: 0.3s; }
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
-
+.container { 
+    max-width: 1240px;
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+}
 .site-header {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  position: sticky; 
+  top: 0; 
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
   border-bottom: 3px solid var(--primary);
+  width: 100%;
 }
 
 .header-row { 
   display: flex !important; 
   align-items: center !important; 
   justify-content: space-between !important; 
-  height: 75px;
-  padding: 0 20px 0 0 !important;
+  min-height: 75px;
+  height: auto !important;
+  padding: 10px 0 !important;
 }
 
 .logo-text { font-weight: 800; font-size: 1.4rem; color: var(--primary); white-space: nowrap; }
 
 .site-nav ul { 
   display: flex !important; 
-  gap: 6px; /* Réduit de 12px à 6px pour gagner de la place */
+  gap: 6px; 
   list-style: none; 
   margin: 0; 
   padding: 0; 
-  flex-wrap: nowrap !important; 
-  align-items: center; /* Aligne le bouton Login avec les autres liens */
+  flex-wrap: wrap !important;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .site-nav a { 
-  font-size: 13px; /* Réduit de 14px à 13px pour que tout tienne */
+  font-size: 13px; 
   font-weight: 600; 
   color: var(--muted); 
-  padding: 6px 10px; /* Réduit le rembourrage latéral */
+  padding: 6px 10px; 
   border-radius: 20px; 
   white-space: nowrap;
 }
 
-.site-nav a:hover, .site-nav a.active { color: white; background: var(--primary); }
-
-
-/* --- STYLE BOUTON LOGIN --- */
 .btn-login {
   background: #1f5aa6 !important;
   color: white !important;
   padding: 8px 16px !important; 
   border-radius: 50px;
   font-size: 13px !important;
-  font-weight: 800 !important; /* Plus gras pour qu'il ressorte */
+  font-weight: 800 !important;
   margin-left: 5px;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
-.btn-login:hover {
-  background: #164680 !important;
-  transform: translateY(-1px);
-}
+.btn-login:hover { background: #164680 !important; transform: translateY(-1px); }
 
-/* --- BLOCS CALLOUT (NOUVEAU STYLE ÉPURÉ) --- */
+/* --- STYLE CALLOUT --- */
 .callout {
-  background: #f0f7ff !important; /* Bleu très clair */
-  border: 1px solid #e2e8f0; /* Gris clair */
-  color: #1a202c !important; /* Texte gris très foncé/noir pour la lisibilité */
+  background: #f0f7ff !important;
+  border: 1px solid #e2e8f0;
+  color: #1a202c !important;
 }
+.callout h1, .callout h2, .callout h3 { color: #1f5aa6 !important; }
+.callout p { color: #4a5568 !important; }
 
-.callout h1, .callout h2, .callout h3 {
-  color: #1f5aa6 !important; /* Ton bleu principal */
-}
-
-.callout p {
-  color: #4a5568 !important; /* Gris intermédiaire pour le texte */
-}
-/* --- HERO --- */
+/* --- HERO (ORDINATEUR) --- */
 .hero { padding: 50px 0; }
 .hero-grid { 
   display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; 
 }
+
+/* --- CODE D'ALIGNEMENT AJOUTÉ POUR L'ORDI --- */
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligne soleil + carte à droite sur ordi */
+  gap: 20px;
+  width: 100%; /*ajout taille*/
+}
+
+.hero-card {
+text-align: left; /* Garde le texte de la carte lisible à gauche */
+  width: 100%;
+  max-width: 400px; /* Ajuste la largeur de la carte ici */
+}
+
 h1 { font-size: 46px; font-weight: 800; line-height: 1.1; color: var(--primary); margin: 0 0 20px; }
 
-/* --- BOUTONS À PÉTALES VIOLETS --- */
+/* --- BOUTONS À PÉTALES --- */
 .btn { 
   height: 3.5em; width: 11em; 
   display: inline-flex; align-items: center; justify-content: center; 
@@ -166,46 +200,38 @@ h1 { font-size: 46px; font-weight: 800; line-height: 1.1; color: var(--primary);
   box-shadow: 0 4px 15px rgba(31, 90, 166, 0.4);
 }
 
-/* Style des pétales */
 .flower { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  position: absolute; 
-  pointer-events: none; 
-  z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; position: absolute; pointer-events: none; z-index: 1;
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .petal {
-  height: 1em; width: 1em; /* Pétales plus grands pour être bien visibles */
+  height: 1em; width: 1em;
   border-radius: 40% 70% / 7% 90%;
   background: linear-gradient(#8A2BE2, #9370DB); 
   border: 0.5px solid #4B0082;
   box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
 }
 
-/* Positionnement initial (un peu caché derrière) */
 .flower1 { top: -5px; left: -5px; }
 .flower2 { top: -5px; right: -5px; }
 .flower3 { bottom: -5px; left: -5px; }
 .flower6 { right: -5px; bottom: -5px; }
 
-/* --- EFFET AU SURVOL : ÉPANOUISSEMENT --- */
 .btn:hover .text-btn { background: #164680; }
-
 .btn:hover .flower1 { transform: translate(-15px, -10px) rotate(-15deg); }
 .btn:hover .flower2 { transform: translate(15px, -10px) rotate(15deg); }
 .btn:hover .flower3 { transform: translate(-15px, 10px) rotate(15deg); }
-.btn:hover .flower6 { transform: translate(15px, 10px) rotate(-15deg); }
+.btn:hover .flower6 { transform: translate(15px, 10px) rotate(15deg); }
 
 .btn:active .text-btn { transform: scale(0.95); }
 
-/* --- CARTES & GRID (MISE À JOUR POUR ÉVITER LES 4 CARTES ÉCRASÉES) --- */
+/* --- CARTES & GRID (FORCE 2 PAR 2 SUR ORDI) --- */
 .card-grid { 
   display: grid; 
-  /* On passe de 260px à 350px pour forcer le passage à la ligne et aérer l'affichage */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  gap: 25px; 
+  /* On remplace le minmax par un 2 fixe pour l'ordinateur */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px; 
   margin-top: 40px; 
 }
 
@@ -215,63 +241,156 @@ h1 { font-size: 46px; font-weight: 800; line-height: 1.1; color: var(--primary);
   padding: 35px; 
   border-radius: 24px; 
   transition: 0.4s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
 }
 
-.card:hover { 
-  transform: translateY(-12px); 
-  border-color: var(--primary); 
-  box-shadow: 0 20px 40px rgba(31, 90, 166, 0.1); 
-}
+.card:hover { transform: translateY(-12px); border-color: var(--primary); }
+.card h3 { color: var(--primary); margin-bottom: 15px; font-size: 22px; font-weight: 800; }
+.card p { color: #1a202c !important; font-weight: 500; opacity: 1 !important; }
 
-.card h3 { 
-  color: var(--primary); 
-  margin-bottom: 15px; 
-  font-size: 22px; 
-  font-weight: 800; 
-}
-/* Correction visibilité texte Photo 3 */
-.card p {
-  color: #1a202c !important; /* Force le texte sombre pour la lecture */
-  font-weight: 500;
-  opacity: 1 !important;
-}
-
-/* --- FOOTER ALIGNÉ (PHOTO 2) --- */
+/* --- FOOTER & VAGUE --- */
 .footer-grid { 
   display: flex !important; justify-content: space-between !important; 
   align-items: flex-start !important; gap: 40px; border-top: 1px solid var(--border); padding-top: 50px;
 }
 .footer-grid h4 { margin: 0 0 20px; color: var(--primary); font-size: 18px; font-weight: 800; }
 
-.wave-container {
-  width: 100%;
-  height: 60px;
-  overflow: hidden;
-  position: relative;
-  margin: 40px 0; /* Espace pour que la vague ne colle pas aux cartes */
+.wave-container { width: 100%; height: 60px; overflow: hidden; position: relative; margin: 40px 0; }
+.wave-svg { position: absolute; width: 200%; height: 100%; animation: waveMove 6s linear infinite; }
+
+@keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- REVEAL --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+
+
+/* ============================================================
+   RESPONSIVE (TOUT EST CONSERVÉ POUR MOBILE)
+   ============================================================ */
+@media (max-width: 1024px) {
+    .site-header { position: sticky !important; height: auto !important; min-height: 140px !important; }
+    .header-row { flex-direction: column !important; justify-content: center !important; gap: 10px !important; padding: 15px !important; }
+    .site-nav ul { justify-content: center !important; width: 100% !important; }
+
+    .hero-grid { display: flex !important; flex-direction: column !important; padding-top: 30px !important; }
+    
+    .hero-content { order: 1 !important; width: 100% !important; }
+
+    /* LE SOLEIL (ORDRE 2) + CENTRAGE MOBILE OBLIGATOIRE */
+    .hero-aside { 
+        order: 2 !important; 
+        width: 100% !important; 
+        align-items: center !important; /* RECENTRE SUR MOBILE */
+        display: flex !important; 
+    }
+
+    /* À mettre à l'intérieur du bloc @media existant */
+    .card-grid { 
+        grid-template-columns: 1fr !important; /* Force 1 seule colonne sur tel */
+        gap: 20px !important;
+    }
+
+    .weather-container {
+        order: 2 !important; 
+        position: relative !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 180px !important; 
+        margin: 30px auto !important;
+        width: 100% !important;
+        left: 0 !important;
+    }
+
+    .sun {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important; 
+    }
+
+    /* LA CARTE (ORDRE 3) */
+    .hero-card { order: 3 !important; width: 100% !important; margin-top: 20px !important; }
+
+    /* BOUTONS MOBILE */
+    .cta-row { flex-direction: column !important; align-items: center !important; gap: 15px !important; }
+    .btn { width: 90% !important; max-width: 300px !important; }
 }
 
-.wave-svg {
-  position: absolute;
-  width: 200%;
-  height: 100%;
-  animation: waveMove 6s linear infinite; /* Un peu plus lent pour plus de douceur */
+.view-btn {
+    display: none; /* Caché sur ordinateur */
 }
 
-@keyframes waveMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* --- SYSTÈME DE ZOOM (LIGHTBOX) --- */
+.lightbox {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 10000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Fond noir transparent */
+    padding: 20px;
 }
 
-/* --- EFFET SCROLL REVEAL (FUSIONNÉ POUR SONARQUBE) --- */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px); /* L'élément est 30px plus bas */
-  transition: all 0.8s ease-out; /* Durée de l'animation */
+/* Affiche la lightbox quand on clique sur le lien #zoom-img */
+.lightbox:target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0); /* L'élément remonte à sa place */
+.lightbox-content {
+    position: relative;
+    max-width: 95%;
+    max-height: 90%;
+}
+
+.lightbox-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+/* Bouton Fermer */
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 18px;
+    background: var(--primary);
+    padding: 5px 15px;
+    border-radius: 50px;
+}
+
+/* Permet de fermer en cliquant n'importe où sur le fond noir */
+.lightbox-close {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    cursor: default;
+}
+
+/* Ton code pour le message sur mobile */
+.view-hint { display: none; }
+@media (max-width: 1024px) {
+    .view-hint {
+        display: block;
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-grid { flex-direction: column !important; text-align: center; gap: 25px; }
+    .grid-2 { grid-template-columns: 1fr !important; }
 }

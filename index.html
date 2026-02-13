@@ -19,7 +19,7 @@
 <div class="bubble-decor b3"></div>
 
 <header class="site-header">
-  <div class="container header-row" style="padding-left: 0 !important;">
+  <div class="container header-row">
 <a class="logo" href="index.html" aria-label="Accueil RESAWAN.fr" style="display: flex; align-items: center; gap: 25px; text-decoration: none;">
   <img src="images/Logo_Iwan_Bleu_Foncé.png" alt="" style="height: 26px; width: auto; display: block;">
   <span class="logo-text" style="line-height: 1; margin-top:7px; margin-right: 15px;">RESAWAN.fr</span>
@@ -45,41 +45,43 @@
 
 <section class="hero">
   <div class="container hero-grid">
-    <div>
+    
+    <div class="hero-content">
       <p class="kicker">Logiciel VAO</p>
-      <h1 style="font-size: 38px; line-height: 1.2; margin-bottom: 20px;">La plateforme 100% Web pour gérer vos séjours</h1>
+      <h1>La plateforme 100% Web pour gérer vos séjours</h1>
       
-      <p class="lead" style="font-size: 17px; font-weight: 500; color: #1a202c; max-width: 600px;">
+      <p class="lead">
         Plateforme <strong>100% Web (Full SaaS)</strong> : centralisez la gestion des séjours, des vacanciers et des encadrants. 
         Sécurisez vos pratiques, simplifiez l’administratif et gagnez un temps précieux pour vous concentrer sur l'humain.
       </p>
+
       <p style="font-size: 14px; color: var(--muted); margin-top: 10px; font-weight: 600;">
         <span style="color: var(--primary);">✓</span> Sans installation &nbsp; 
         <span style="color: var(--primary);">✓</span> Données sécurisées &nbsp; 
         <span style="color: var(--primary);">✓</span> Support réactif
       </p>
 
-<div class="cta-row" style="margin-top: 35px; display: flex; gap: 20px; flex-wrap: nowrap;">
-  <a class="btn" href="demo.html" style="min-width: 200px;">
-    <div class="wrapper">
-      <div class="flower flower1"><div class="petal"></div><div class="petal"></div></div>
-      <div class="flower flower2"><div class="petal"></div><div class="petal"></div></div>
-      <div class="flower flower3"><div class="petal"></div><div class="petal"></div></div>
-      <div class="flower flower6"><div class="petal"></div><div class="petal"></div></div>
-      <div class="text-btn" style="white-space: nowrap;">Demander une démo</div>
-    </div>
-  </a>
+      <div class="cta-row" style="margin-top: 35px; display: flex; gap: 20px; flex-wrap: wrap;">
+        <a class="btn" href="demo.html" style="min-width: 200px;">
+          <div class="wrapper">
+            <div class="flower flower1"><div class="petal"></div><div class="petal"></div></div>
+            <div class="flower flower2"><div class="petal"></div><div class="petal"></div></div>
+            <div class="flower flower3"><div class="petal"></div><div class="petal"></div></div>
+            <div class="flower flower6"><div class="petal"></div><div class="petal"></div></div>
+            <div class="text-btn" style="white-space: nowrap;">Demander une démo</div>
+          </div>
+        </a>
 
-  <a class="btn" href="contact.html" style="min-width: 200px;">
-    <div class="wrapper">
-      <div class="flower flower1"><div class="petal"></div><div class="petal"></div></div>
-      <div class="flower flower2"><div class="petal"></div><div class="petal"></div></div>
-      <div class="flower flower3"><div class="petal"></div><div class="petal"></div></div>
-      <div class="flower flower6"><div class="petal"></div><div class="petal"></div></div>
-      <div class="text-btn" style="white-space: nowrap;">Nous contacter</div>
-    </div>
-  </a>
-</div>
+        <a class="btn" href="contact.html" style="min-width: 200px;">
+          <div class="wrapper">
+            <div class="flower flower1"><div class="petal"></div><div class="petal"></div></div>
+            <div class="flower flower2"><div class="petal"></div><div class="petal"></div></div>
+            <div class="flower flower3"><div class="petal"></div><div class="petal"></div></div>
+            <div class="flower flower6"><div class="petal"></div><div class="petal"></div></div>
+            <div class="text-btn" style="white-space: nowrap;">Nous contacter</div>
+          </div>
+        </a>
+      </div>
 
       <div class="pill-row" style="margin-top: 35px;">
         <span class="pill">Séjours</span>
@@ -88,7 +90,7 @@
         <span class="pill">Conformité</span>
         <span class="pill">100% Web / SaaS</span>
       </div>
-    </div>
+</div> 
 
     <div class="hero-aside">
       <div class="weather-container">
@@ -110,11 +112,10 @@
           </ul>
         </div>
       </div>
-    </div>
-  </div>
+    </div> </div> 
 </section>
 
-<!-- Section Contact Rapide -->
+
 <div style="text-align: center; margin: 6px auto; max-width: 600px;">
   <div style="background: linear-gradient(135deg, #1f5aa6 0%, #2d6bb8 100%); padding: 25px 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(31, 90, 166, 0.15);">
     <div style="color: white; font-size: 16px; margin-bottom: 15px; font-weight: 500;">Une question ? Contactez-nous</div>
@@ -181,7 +182,20 @@
 
 <section class="section" style="text-align: center; padding: 20px 0;">
   <div class="container">
-    <img src="images/drive.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+    <a href="#zoom-drive" style="text-decoration: none; display: block;" aria-label="Agrandir l'image du drive">
+      <img src="images/drive.jpg" 
+           alt="Aperçu du drive RESAWAN" 
+           style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+      <div class="view-hint">🔍 Cliquez pour agrandir l'aperçu</div>
+    </a>
+
+    <div id="zoom-drive" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer l'aperçu"></a>
+      <div class="lightbox-content">
+        <img src="images/drive.jpg" alt="Drive plein écran">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -202,7 +216,21 @@
 <section class="section" style="text-align: center; padding: 10px 0;">
   <div class="container">
     <h2 style="margin-bottom: 30px; font-size: 28px; color: var(--primary);">Aperçu de notre plateforme</h2>
-    <img src="images/aperçu_plateforme.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+    
+    <a href="#zoom-apercu" style="text-decoration: none; display: block;" aria-label="Agrandir l'aperçu plateforme">
+      <img src="images/aperçu_plateforme.jpg" 
+           alt="Aperçu général de la plateforme" 
+           style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+      <div class="view-hint">🔍 Cliquez pour agrandir l'aperçu</div>
+    </a>
+
+    <div id="zoom-apercu" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer l'aperçu"></a>
+      <div class="lightbox-content">
+        <img src="images/aperçu_plateforme.jpg" alt="Plateforme plein écran">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -240,7 +268,7 @@
       <h4>Contact</h4>
       <p class="muted">
         02 40 28 86 38
-        contact@iwwan.fr
+        contact@iwan.fr
       </p>
     </div>
     <div>

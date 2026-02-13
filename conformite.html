@@ -21,7 +21,7 @@
 <header class="site-header">
   <div class="container header-row" style="padding-left: 0 !important;">
     <a class="logo" href="index.html" aria-label="Accueil RESAWAN.fr" style="display: flex; align-items: center; gap: 25px; text-decoration: none;">
-      <img src="images/Logo_Iwan_Bleu_Foncé.png" alt="" style="height: 26px; width: auto; display: block;">
+      <img src="images/Logo_Iwan_Bleu_Foncé.png" class="img-zoom" alt="Capture plateforme" style="height: 26px; width: auto; display: block;">
       <span class="logo-text" style="line-height: 1; margin-top:7px;">RESAWAN.fr</span>
     </a>
 
@@ -84,7 +84,22 @@
 <section class="section" style="text-align: center; padding: 10px 0;">
   <div class="container">
     <h2 style="margin-bottom: 30px; font-size: 28px; color: var(--primary);">Un aperçu de notre plateforme</h2>
-    <img src="images/tableau_de_bord.jpg" alt="Aperçu de la plateforme RESAWAN" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+    
+    <a href="#zoom-img" style="text-decoration: none; display: block;" aria-label="Agrandir l'image du tableau de bord">
+      <img src="images/tableau_de_bord.jpg" 
+           alt="Aperçu de la plateforme RESAWAN" 
+           style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(31, 90, 166, 0.15);">
+      <div class="view-hint">🔍 Cliquez pour agrandir l'aperçu</div>
+    </a>
+
+    <div id="zoom-img" class="lightbox">
+      <a href="#_" class="lightbox-close" aria-label="Fermer l'aperçu et revenir au site"></a>
+      
+      <div class="lightbox-content">
+        <img src="images/tableau_de_bord.jpg" alt="Aperçu plein écran du tableau de bord">
+        <a href="#_" class="close-btn">Fermer l'image ×</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -120,7 +135,7 @@
       <h4>Contact</h4>
       <p class="muted">
         02 40 28 86 38
-        contact@iwwan.fr
+        contact@iwan.fr
       </p>
     </div>
     <div>
